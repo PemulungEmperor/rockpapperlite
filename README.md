@@ -8,4 +8,4 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ## Deploy Link
-try : [https://vercel.com/pemulungemperor/rockpapperlite](https://rockpapperlite.vercel.app/)https://rockpapperlite.vercel.app/
+try : https://rockpapperlite.vercel.app/
