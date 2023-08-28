@@ -29,7 +29,7 @@ const Menu = () => {
 
   return (
     <div>
-      <div className="container w-50 mt-5" style={{ border: "3px solid #5B9A8B" }}>
+      <div className="container w-75 mt-5" style={{ border: "3px solid #5B9A8B" }}>
         <div className="row">
           <h3 className="text-center my-5">Welcome!</h3>
         </div>
@@ -37,7 +37,7 @@ const Menu = () => {
           <div className="selectMode mb-4">
             <h5 className="text-center">Select Mode :</h5>
             <div className="d-flex justify-content-center">
-              <select className="form-select form-select-md w-25" value={mode} onChange={(e) => enabledStart(e)}>
+              <select className="form-select form-select-md w-50" value={mode} onChange={(e) => enabledStart(e)}>
                 <option value=""></option>
                 <option value="player">2 Player</option>
                 <option value="computer">Versus Computer</option>
