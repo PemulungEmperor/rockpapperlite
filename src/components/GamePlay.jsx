@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -14,7 +14,7 @@ const GamePlay = () => {
   const [computerScore, setComputerScore] = useState(0);
   const [round, setRound] = useState(1);
   const [result, setResult] = useState("");
-  const [winner, setWinner] = useState("");
+  const [winner, setWinner] = useState(null);
 
   const computerPlay = () => {
     const randomChoice = Math.floor(Math.random() * choices.length);
@@ -23,6 +23,7 @@ const GamePlay = () => {
 
   const playGame = (playerSelection, computerSelection) => {
     if (playerSelection === computerSelection) {
+      setWinner(null);
       setResult("It's Draw");
     } else if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "paper")) {
       setP1Score((P1Score) => P1Score + 1);
@@ -32,12 +33,6 @@ const GamePlay = () => {
       setResult("Computer Got Point!");
     }
     setRound((round) => round + 1);
-
-    if (P1Score === 3) {
-      setWinner("Player 1");
-    } else {
-      setWinner("Computer");
-    }
   };
 
   const gameCalculation = (e) => {
@@ -79,7 +74,7 @@ const GamePlay = () => {
         if (result.isConfirmed) {
           setTimeout(() => {
             restartAll();
-          }, 1000);
+          }, 300);
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           setTimeout(() => {
             navigate("/");
@@ -87,6 +82,14 @@ const GamePlay = () => {
         }
       });
   }
+
+  useEffect(() => {
+    if (P1Score === 3) {
+      setWinner("Player 1");
+    } else if (computerScore === 3) {
+      setWinner("Computer");
+    }
+  }, [P1Score, computerScore]);
 
   return (
     <div>

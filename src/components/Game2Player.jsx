@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -29,12 +29,6 @@ const Game2Player = () => {
       setResult("Player 2 Got Point!");
     }
     setRound((round) => round + 1);
-
-    if (P1Score === 2) {
-      setWinner("Player 1");
-    } else if (P2Score === 2) {
-      setWinner("Player 2");
-    }
   };
 
   const player1Turn = (e) => {
@@ -81,7 +75,7 @@ const Game2Player = () => {
         if (result.isConfirmed) {
           setTimeout(() => {
             restartAll();
-          }, 1000);
+          }, 300);
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           setTimeout(() => {
             navigate("/");
@@ -89,6 +83,14 @@ const Game2Player = () => {
         }
       });
   }
+
+  useEffect(() => {
+    if (P1Score === 3) {
+      setWinner("Player 1");
+    } else if (P2Score === 3) {
+      setWinner("Player 2");
+    }
+  }, [P1Score, P2Score]);
 
   return (
     <div>
