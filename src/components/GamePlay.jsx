@@ -91,7 +91,7 @@ const GamePlay = () => {
   return (
     <div>
       <Title></Title>
-      <div className="container mt-5 w-50" style={{ border: "2px solid #5B9A8B" }}>
+      <div className="container mt-5 mb-5 w-75" style={{ border: "2px solid #5B9A8B" }}>
         <div className="row my-3">
           <h5 className="text-center text-black fw-bold"> Round {round}</h5>
           <div className="col-md-4 d-flex justify-content-center">
